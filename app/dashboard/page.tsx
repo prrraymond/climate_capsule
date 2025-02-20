@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client'
+
+import React, { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Leaf, Car, Home, ShoppingBag, Shirt, Plus, ChevronDown, ChevronUp } from 'lucide-react';
 
