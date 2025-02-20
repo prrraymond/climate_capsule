@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react'
 
-export default function LandingPage() {
+useEffect(() => {
+  export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   const backgroundImages = [
@@ -169,3 +170,4 @@ export default function LandingPage() {
     </div>
   )
 }
+}, [backgroundImages.length])

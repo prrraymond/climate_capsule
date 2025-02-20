@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function AuthPage() {
   const [isSignIn, setIsSignIn] = useState(true)
@@ -29,7 +30,7 @@ export default function AuthPage() {
       <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
         <div className="w-full max-w-md">
           {/* Back to Home */}
-          <a 
+          <Link 
             href="/"
             className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors"
           >
@@ -37,7 +38,7 @@ export default function AuthPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Home
-          </a>
+          </Link>
 
           {/* Auth Card */}
           <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-8 border border-white/20">
