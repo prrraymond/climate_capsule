@@ -94,6 +94,18 @@ const ClimateDashboard = () => {
     }));
   };
 
+  const togglePledge = (action) => {
+    setSelectedPledges(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(action)) {
+        newSet.delete(action);
+      } else {
+        newSet.add(action);
+      }
+      return newSet;
+    });
+  };
+
   // Calculate metrics
   const totalPledges = selectedPledges.size;
   const categoryPledgeCounts = {};
