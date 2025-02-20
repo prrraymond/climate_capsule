@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 
-useEffect(() => {
-  export default function LandingPage() {
+export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   const backgroundImages = [
@@ -19,7 +18,8 @@ useEffect(() => {
     }, 8000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [backgroundImages.length]) // Added backgroundImages.length to dependency array
+
 
   const scrollToSection = (elementId) => {
     document.getElementById(elementId)?.scrollIntoView({
@@ -170,4 +170,3 @@ useEffect(() => {
     </div>
   )
 }
-}, [backgroundImages.length])
