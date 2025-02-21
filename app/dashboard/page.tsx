@@ -139,9 +139,9 @@ const ClimateDashboard = () => {
     
 // Change this part:
   const opportunityCategory = Object.entries(categories)
-    .sort(([categoryKey1, a], [categoryKey2, b]) => 
-        (categoryPledgeCounts[categoryKey2] || 0) / b.actions.length -
-        (categoryPledgeCounts[categoryKey1] || 0) / a.actions.length
+    .sort(([categoryKey1, a], [categoryKey2, b]: [CategoryKey, typeof categories[CategoryKey]]) => 
+        (categoryPledgeCounts[categoryKey2 as CategoryKey] || 0) / b.actions.length -
+        (categoryPledgeCounts[categoryKey1 as CategoryKey] || 0) / a.actions.length
     )[0]?.[0] || 'none';
 
 // Track new initiatives since last update
