@@ -6,7 +6,6 @@ import { Leaf, Car, Home, ShoppingBag, Shirt, Plus, ChevronDown, ChevronUp } fro
 
 
 const ClimateDashboard = () => {
-  const [selectedPledges, setSelectedPledges] = useState(new Set());
   const [lastUpdateTime] = useState(new Date().getTime());
   
   const categories = {
@@ -93,6 +92,8 @@ const ClimateDashboard = () => {
     [K in CategoryKey]?: boolean;
   };
 
+  const [selectedPledges, setSelectedPledges] = useState<Set<Action>>(new Set());
+
   const [expandedCategories, setExpandedCategories] = useState<ExpandedCategories>({});
 
   const toggleCategory = (key: CategoryKey) => {
@@ -116,7 +117,7 @@ const ClimateDashboard = () => {
 
   // Calculate metrics
   const totalPledges = selectedPledges.size;
-  const categoryPledgeCounts = {};
+  const categoryPledgeCounts: Record<CategoryKey, number> = {};
   selectedPledges.forEach(pledge => {
     for (const [category, data] of Object.entries(categories)) {
       if (data.actions.includes(pledge)) {
