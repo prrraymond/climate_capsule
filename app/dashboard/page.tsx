@@ -117,11 +117,19 @@ const ClimateDashboard = () => {
 
   // Calculate metrics
   const totalPledges = selectedPledges.size;
-  const categoryPledgeCounts: Record<CategoryKey, number> = {};
-  selectedPledges.forEach(pledge => {
+  const categoryPledgeCounts: Record<CategoryKey, number> = {
+    food: 0,
+    transport: 0,
+    home: 0,
+    shopping: 0,
+    clothing: 0,
+    other: 0
+
+  };
+  selectedPledges.forEach((pledge: Action) => {
     for (const [category, data] of Object.entries(categories)) {
       if (data.actions.includes(pledge)) {
-        categoryPledgeCounts[category] = (categoryPledgeCounts[category] || 0) + 1;
+        categoryPledgeCounts[category as CategoryKey] = (categoryPledgeCounts[category as CategoryKey] || 0) + 1;
       }
     }
   });
