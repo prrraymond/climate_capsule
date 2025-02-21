@@ -134,8 +134,10 @@ const ClimateDashboard = () => {
     }
   });
   
-  const strongestCategory = Object.entries(categoryPledgeCounts)
-    .sort(([,a], [,b]) => b - a)[0]?.[0] || 'none';
+  const strongestCategory = (Object.entries(categories) as Array<[CategoryKey, typeof categories[CategoryKey]]>)
+    .sort(([,a], [,b]) => 
+        (categoryPledgeCounts[b as CategoryKey] || 0) - (categoryPledgeCounts[a as CategoryKey] || 0)
+    )[0]?.[0] as CategoryKey || 'none' as CategoryKey;
     
 // Change this part:
   const opportunityCategory = (Object.entries(categories) as Array<[CategoryKey, typeof categories[CategoryKey]]>)
@@ -171,8 +173,8 @@ const ClimateDashboard = () => {
               <div className="flex items-baseline gap-4">
                 <div className="text-2xl font-bold capitalize">{strongestCategory}</div>
                 <div className="text-sm text-gray-600">
-                  {Math.round((categoryPledgeCounts[strongestCategory] || 0) / 
-                    (categories[strongestCategory]?.actions.length || 1) * 100)}%
+                  {Math.round((categoryPledgeCounts[strongestCategory as CategoryKey] || 0) / 
+                    (categories[strongestCategory as CategoryKey]?.actions.length || 1) * 100)}%
                 </div>
               </div>
               <div className="text-sm text-gray-600">Strongest Category</div>
