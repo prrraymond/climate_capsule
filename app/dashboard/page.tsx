@@ -88,6 +88,7 @@ const ClimateDashboard = () => {
   };
 
   type CategoryKey = keyof typeof categories;
+  type Action = typeof categories[CategoryKey]['actions'][number];
   type ExpandedCategories = {
     [K in CategoryKey]?: boolean;
   };
@@ -101,7 +102,7 @@ const ClimateDashboard = () => {
     }));
   };
 
-  const togglePledge = (action) => {
+  const togglePledge = (action: Action) => {
     setSelectedPledges(prev => {
       const newSet = new Set(prev);
       if (newSet.has(action)) {
