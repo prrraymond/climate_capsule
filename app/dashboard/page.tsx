@@ -7,7 +7,6 @@ import { Leaf, Car, Home, ShoppingBag, Shirt, Plus, ChevronDown, ChevronUp } fro
 
 const ClimateDashboard = () => {
   const [selectedPledges, setSelectedPledges] = useState(new Set());
-  const [expandedCategories, setExpandedCategories] = useState({});
   const [lastUpdateTime] = useState(new Date().getTime());
   
   const categories = {
@@ -89,6 +88,11 @@ const ClimateDashboard = () => {
   };
 
   type CategoryKey = keyof typeof categories;
+  type ExpandedCategories = {
+    [K in CategoryKey]?: boolean;
+  };
+
+  const [expandedCategories, setExpandedCategories] = useState({});
 
   const toggleCategory = (key: CategoryKey) => {
     setExpandedCategories(prev => ({
