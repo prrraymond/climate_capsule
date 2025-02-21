@@ -204,7 +204,7 @@ const ClimateDashboard = () => {
 
       {/* Collapsible Categories */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Object.entries(categories).map(([key, category]) => (
+        {(Object.entries(categories) as Array<[CategoryKey, typeof categories[CategoryKey]]>).map(([key, category]) => (
           <Card key={key} className="overflow-hidden">
             <CardHeader 
               className="border-b bg-gray-50 cursor-pointer hover:bg-gray-100"
