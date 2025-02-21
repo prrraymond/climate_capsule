@@ -92,7 +92,7 @@ const ClimateDashboard = () => {
     [K in CategoryKey]?: boolean;
   };
 
-  const [expandedCategories, setExpandedCategories] = useState({});
+  const [expandedCategories, setExpandedCategories] = useState<ExpandedCategories>({});
 
   const toggleCategory = (key: CategoryKey) => {
     setExpandedCategories(prev => ({
