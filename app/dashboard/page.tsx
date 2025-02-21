@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Leaf, Car, Home, ShoppingBag, Shirt, Plus, ChevronDown, ChevronUp } from 'lucide-react';
 
+type CategoryKey = keyof typeof categories;
+
 const ClimateDashboard = () => {
   const [selectedPledges, setSelectedPledges] = useState(new Set());
   const [expandedCategories, setExpandedCategories] = useState({});
@@ -87,7 +89,7 @@ const ClimateDashboard = () => {
     }
   };
 
-  const toggleCategory = (key) => {
+  const toggleCategory = (key: CategoryKey) => {
     setExpandedCategories(prev => ({
       ...prev,
       [key]: !prev[key]
