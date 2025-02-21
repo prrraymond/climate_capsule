@@ -135,8 +135,8 @@ const ClimateDashboard = () => {
   });
   
   const strongestCategory = (Object.entries(categories) as Array<[CategoryKey, typeof categories[CategoryKey]]>)
-    .sort(([,a], [,b]) => 
-        (categoryPledgeCounts[b as CategoryKey] || 0) - (categoryPledgeCounts[a as CategoryKey] || 0)
+    .sort(([keyA], [keyB]) =>  // Use the keys (keyA, keyB) instead of values (a, b)
+        (categoryPledgeCounts[keyB] || 0) - (categoryPledgeCounts[keyA] || 0)
     )[0]?.[0] as CategoryKey || 'none' as CategoryKey;
     
 // Change this part:
