@@ -21,7 +21,7 @@ export default function LandingPage() {
   }, [backgroundImages.length]) // Added backgroundImages.length to dependency array
 
 
-  const scrollToSection = (elementId) => {
+  const scrollToSection = (elementId: string) => {
     document.getElementById(elementId)?.scrollIntoView({
       behavior: 'smooth'
     })
