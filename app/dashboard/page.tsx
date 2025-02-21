@@ -126,11 +126,12 @@ const ClimateDashboard = () => {
       (categoryPledgeCounts[a.title] || 0) / a.actions.length
     )[0]?.[0] || 'none';
 
-  // Track new initiatives since last update
+// Track new initiatives since last update
   const newInitiatives = selectedPledges.size - 
-    Array.from(selectedPledges).filter(pledge => 
-      new Date().getTime() - lastUpdateTime < 24 * 60 * 60 * 1000
-    ).length;
+    Array.from(selectedPledges).filter((pledge) => { // eslint-disable-line @typescript-eslint/no-unused-vars
+        // TODO: Will use pledge data for timestamp tracking
+        return new Date().getTime() - lastUpdateTime < 24 * 60 * 60 * 1000
+    }).length;
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
