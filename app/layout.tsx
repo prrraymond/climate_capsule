@@ -1,3 +1,4 @@
+import './globals.css'
 import { Quicksand, Inter } from 'next/font/google'
 
 const quicksand = Quicksand({

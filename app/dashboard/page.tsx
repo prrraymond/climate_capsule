@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Leaf, Car, Home, ShoppingBag, Shirt, Plus, ChevronDown, ChevronUp } from 'lucide-react';
-
+import ClientDebug from '@/components/ClientDebug';
 
 const ClimateDashboard = () => {
   const [lastUpdateTime] = useState(new Date().getTime());
@@ -262,4 +262,10 @@ const ClimateDashboard = () => {
   );
 };
 
-export default ClimateDashboard;
+export default function DashboardPage() {
+    return (
+      <ClientDebug>
+        <ClimateDashboard />
+      </ClientDebug>
+    );
+  }
