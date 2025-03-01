@@ -1,17 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link'
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function AuthPage() {
-  const [isSignIn, setIsSignIn] = useState(true)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [isSignIn, setIsSignIn] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // Handle email/password auth
-  }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Placeholder for auth logic
+    console.log('Authenticating with:', email, password);
+    
+    // Navigate to dashboard on success
+    window.location.href = '/dashboard';
+  };
 
   return (
     <div className="relative min-h-screen">

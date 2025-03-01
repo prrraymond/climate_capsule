@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -51,13 +52,13 @@ export default function LandingPage() {
               <div className="text-white text-xl font-light tracking-wide">
                 Climate Pledge
               </div>
-              <a 
+              <Link 
                 href="/dashboard" 
                 className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full 
                           backdrop-blur-sm transition-all duration-200 font-quicksand"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </nav>
 
@@ -75,13 +76,13 @@ export default function LandingPage() {
               </p>
 
               <div className="flex gap-4">
-                <a 
+                <Link 
                   href="/dashboard" 
                   className="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white 
                             rounded-full text-lg transition-all duration-200"
                 >
                   Make Your Pledge
-                </a>
+                </Link>
                 <button 
                   onClick={() => scrollToSection('how-it-works')} 
                   className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white 
