@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Leaf, Car, Home, ShoppingBag, Shirt, Plus, ChevronDown, ChevronUp } from 'lucide-react';
 import ClientDebug from '@/components/ClientDebug';
-import ClimateDashboard from './ClimateDashboard'; // Adjust the import path if needed
 import NavBar from '@/components/NavBar';
 
 const ClimateDashboard = () => {
