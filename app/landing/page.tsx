@@ -7,8 +7,8 @@ export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   const backgroundImages = [
-    '/central-park-sunset.jpg',
-    '/central-park-winter.jpg',
+    '/IMG_0259.JPG',
+    '/IMG_6845 2.JPG',
   ]
 
   useEffect(() => {
