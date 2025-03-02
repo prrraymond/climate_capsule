@@ -53,7 +53,7 @@ export default function LandingPage() {
                 Climate Pledge
               </div>
               <Link 
-                href="/dashboard" 
+                href="/auth" 
                 className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full 
                           backdrop-blur-sm transition-all duration-200 font-quicksand"
               >
@@ -77,7 +77,7 @@ export default function LandingPage() {
 
               <div className="flex gap-4">
                 <Link 
-                  href="/dashboard" 
+                  href="/auth" 
                   className="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white 
                             rounded-full text-lg transition-all duration-200"
                 >

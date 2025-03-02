@@ -106,6 +106,12 @@ export default function AuthPage() {
                 >
                   {isSignIn ? 'Sign In' : 'Create Account'}
                 </button>
+
+                <p className="mt-6 text-center text-gray-500">
+                  <Link href="/dashboard" className="text-emerald-600 hover:underline">
+                    Skip Sign In (Try the app first)
+                  </Link>
+                </p>
               </div>
             </form>
 
