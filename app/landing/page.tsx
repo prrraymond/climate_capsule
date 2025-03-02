@@ -7,9 +7,47 @@ export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   const backgroundImages = [
-    '/IMG_0259.JPG',
+    
     '/IMG_6845 2.JPG',
-  ]
+// In your landing/page.tsx file
+  const backgroundImages = [
+    {
+    src: 'landscapes/nathan-anderson-OS3pW3b78Cg-unsplash.jpg',
+    attribution: 'Photo by Nathan Anderson on Unsplash',
+    link: 'https://unsplash.com/photos/mountain-during-winter-OS3pW3b78Cg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
+    },
+    {
+    src: 'landscapes/jacalyn-beales-DR_rbQ5ZOTU-unsplash.jpg',
+    attribution: 'Photo by Jacalyn Beales on Unsplash',
+    link: 'https://unsplash.com/photos/waterfalls-DR_rbQ5ZOTU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
+    },
+    {
+    src: '/landscapes/bodega-SCghkFegJfI-unsplash.jpg',
+    attribution: 'Photo by Bodega on Unsplash',
+    link: 'https://unsplash.com/photos/a-motorcycle-driving-down-a-road-in-front-of-a-mountain-SCghkFegJfI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
+    },
+    {
+    src: '/landscapes/andrew-pons-lylCw4zcA7I-unsplash.jpg',
+    attribution: 'Photo by Andrew Pons on Unsplash',
+    link: 'https://unsplash.com/photos/close-up-of-a-yellow-and-blue-macaw-lylCw4zcA7I?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
+    },
+    {
+    src: '/landscapes/alexandra-diaconu-VuBzplNNi0k-unsplash.jpg',
+    attribution: 'Photo by Alexandra Diaconu on Unsplash',
+    link: 'https://unsplash.com/photos/seascape-of-the-ocean-foam-VuBzplNNi0k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
+    },
+    {
+    src: 'landscapes/nathan-dumlao-moQKadTKb7A-unsplash.jpg',
+    attribution: 'Photo by Nathan Dumlao on Unsplash',
+    link: 'https://unsplash.com/photos/rock-mountain-during-foggy-day-moQKadTKb7A?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
+    },
+    {
+    src: '/landscapes/IMG_0259.JPG',
+    attribution: 'Photo by Paul Raymond',
+    link: 
+    }
+    // Add more images with attribution
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -32,18 +70,32 @@ export default function LandingPage() {
     <div className="relative">
       {/* Hero Section with rotating background */}
       <div className="relative h-screen">
+      // Update the slideshow rendering code
         <div className="absolute inset-0 z-0">
-          {backgroundImages.map((image, index) => (
+        {backgroundImages.map((image, index) => (
             <div 
-              key={image}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000
+            key={image.src}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000
                         ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}
-              style={{
-                backgroundImage: `url(${image})`,
-              }}
+            style={{
+                backgroundImage: `url(${image.src})`,
+            }}
             />
-          ))}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+        ))}
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+        
+        {/* Attribution overlay */}
+        <div className="absolute bottom-4 right-4 text-white/70 text-sm backdrop-blur-sm bg-black/30 px-2 py-1 rounded">
+            {backgroundImages[currentImageIndex].attribution}{' '}
+            <a 
+            href={backgroundImages[currentImageIndex].link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="underline hover:text-white"
+            >
+            View original
+            </a>
+        </div>
         </div>
 
         <div className="relative z-10 h-full">
