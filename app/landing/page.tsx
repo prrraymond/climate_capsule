@@ -68,7 +68,7 @@ export default function LandingPage() {
     <div className="relative">
       {/* Hero Section with rotating background */}
       <div className="relative h-screen">
-      // Update the slideshow rendering code
+      {/* Update the slideshow rendering code */}
         <div className="absolute inset-0 z-0">
         {backgroundImages.map((image, index) => (
             <div 
