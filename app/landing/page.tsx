@@ -6,9 +6,7 @@ import Link from 'next/link';
 export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
-  const backgroundImages = [
-    
-    '/IMG_6845 2.JPG',
+
 // In your landing/page.tsx file
   const backgroundImages = [
     {
@@ -44,7 +42,7 @@ export default function LandingPage() {
     {
     src: '/landscapes/IMG_0259.JPG',
     attribution: 'Photo by Paul Raymond',
-    link: 
+    link: '#'
     }
     // Add more images with attribution
   ];
