@@ -88,7 +88,7 @@ export default function LandingPage() {
                 backgroundImage: `url(${image.src})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                objectFit: 'cover',
+                objectFit: 'contain',
                 width: '100%',
                 height: '100%'
             }}
@@ -97,7 +97,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
         
         {/* Attribution overlay */}
-        <div className="absolute bottom-4 right-4 text-white/70 text-sm backdrop-blur-sm bg-black/30 px-2 py-1 rounded">
+        <div className="absolute top-4 right-4 text-white/70 text-sm backdrop-blur-sm bg-black/30 px-2 py-1 rounded">
             {backgroundImages[currentImageIndex].attribution}{' '}
             <a 
             href={backgroundImages[currentImageIndex].link} 
