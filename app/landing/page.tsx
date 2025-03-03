@@ -91,11 +91,11 @@ export default function LandingPage() {
         {/* Photo component with offset positioning */}
         <div className="absolute inset-0 flex justify-end items-center z-0 px-4 md:px-12 lg:px-24">
           <div 
-            className={`relative w-full max-w-4xl ${
+            className={`relative w-full max-w-5xl ${
               imageOrientation === 'portrait' 
-                ? 'h-[70vh] max-w-md' 
-                : 'h-[60vh]'
-            } md:mr-[-5%] overflow-hidden rounded-xl shadow-2xl transition-all duration-500`}
+                ? 'h-[75vh] max-w-md' 
+                : 'h-[65vh]'
+            } md:mr-[-8%] lg:mr-[-10%] overflow-hidden rounded-xl shadow-2xl transition-all duration-500`}
           >
             {backgroundImages.map((image, index) => (
               <div 
