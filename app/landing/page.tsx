@@ -89,7 +89,7 @@ export default function LandingPage() {
       {/* Hero Section with solid gradient background */}
       <div className="relative h-screen bg-gradient-to-br from-blue-900 to-blue-700">
         {/* Photo component with offset positioning */}
-        <div className="absolute inset-0 flex justify-end items-center z-0 px-4 md:px-12 lg:px-24">
+        <div className="absolute inset-0 flex justify-end items-center z-0 px-4 md:px-8 lg:px-16">
           <div 
             className={`relative w-full max-w-5xl ${
               imageOrientation === 'portrait' 
