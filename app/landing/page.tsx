@@ -6,16 +6,14 @@ import Link from 'next/link';
 export default function LandingPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
-
-// In your landing/page.tsx file
   const backgroundImages = [
     {
-    src: 'landscapes/nathan-anderson-OS3pW3b78Cg-unsplash.jpg',
+    src: '/landscapes/nathan-anderson-OS3pW3b78Cg-unsplash.jpg',
     attribution: 'Photo by Nathan Anderson on Unsplash',
     link: 'https://unsplash.com/photos/mountain-during-winter-OS3pW3b78Cg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
     },
     {
-    src: 'landscapes/jacalyn-beales-DR_rbQ5ZOTU-unsplash.jpg',
+    src: '/landscapes/jacalyn-beales-DR_rbQ5ZOTU-unsplash.jpg',
     attribution: 'Photo by Jacalyn Beales on Unsplash',
     link: 'https://unsplash.com/photos/waterfalls-DR_rbQ5ZOTU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
     },
@@ -35,7 +33,7 @@ export default function LandingPage() {
     link: 'https://unsplash.com/photos/seascape-of-the-ocean-foam-VuBzplNNi0k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
     },
     {
-    src: 'landscapes/nathan-dumlao-moQKadTKb7A-unsplash.jpg',
+    src: '/landscapes/nathan-dumlao-moQKadTKb7A-unsplash.jpg',
     attribution: 'Photo by Nathan Dumlao on Unsplash',
     link: 'https://unsplash.com/photos/rock-mountain-during-foggy-day-moQKadTKb7A?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash'
     },
@@ -44,18 +42,17 @@ export default function LandingPage() {
     attribution: 'Photo by Paul Raymond',
     link: '#'
     }
-    // Add more images with attribution
   ];
 
-  // At the top of your component
+  // Preload images
   useEffect(() => {
-    // Preload images
     backgroundImages.forEach(image => {
       const img = new Image();
       img.src = image.src;
     });
   }, []);
 
+  // Image rotation timer
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
@@ -64,8 +61,7 @@ export default function LandingPage() {
     }, 8000)
 
     return () => clearInterval(timer)
-  }, [backgroundImages.length]) // Added backgroundImages.length to dependency array
-
+  }, [backgroundImages.length])
 
   const scrollToSection = (elementId: string) => {
     document.getElementById(elementId)?.scrollIntoView({
@@ -75,43 +71,46 @@ export default function LandingPage() {
 
   return (
     <div className="relative">
-    {/* Hero Section with rotating background */}
-    <div className="relative h-screen">
-      <div className="absolute inset-0 z-0">
-        {backgroundImages.map((image, index) => (
-          <div 
-            key={image.src}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000
-                      ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}
-            style={{
-              backgroundImage: `url(${image.src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              objectFit: 'contain',
-              width: '100%',
-              height: '100%'
-            }}
-          />
-        ))}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
-        
-        {/* Attribution overlay - moved to top right with higher z-index */}
-        <div className="absolute top-4 right-4 text-white/70 text-sm backdrop-blur-sm bg-black/30 px-2 py-1 rounded z-20">
-          {backgroundImages[currentImageIndex].attribution}{' '}
-          <a 
-            href={backgroundImages[currentImageIndex].link} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="underline hover:text-white"
-          >
-            View original
-          </a>
+      {/* Hero Section with solid gradient background */}
+      <div className="relative h-screen bg-gradient-to-br from-blue-900 to-blue-700">
+        {/* Photo component within the hero section */}
+        <div className="absolute inset-0 flex justify-center items-center z-0 px-4 md:px-12 lg:px-24">
+          <div className="relative w-full max-w-4xl h-[60vh] overflow-hidden rounded-xl shadow-2xl">
+            {backgroundImages.map((image, index) => (
+              <div 
+                key={image.src}
+                className={`absolute inset-0 transition-opacity duration-1000
+                          ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}
+                style={{
+                  backgroundImage: `url(${image.src})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  width: '100%',
+                  height: '100%'
+                }}
+              />
+            ))}
+            
+            {/* Attribution overlay - positioned at bottom center */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/80 text-sm backdrop-blur-sm bg-black/50 px-3 py-1.5 rounded-full z-20">
+              {backgroundImages[currentImageIndex].attribution}{' '}
+              <a 
+                href={backgroundImages[currentImageIndex].link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="underline hover:text-white"
+              >
+                View original
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      {/* Rest of your content remains the same */}
 
-        <div className="relative z-10 h-full">
+        {/* Semi-transparent overlay for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10"></div>
+        
+        {/* Content (now positioned with z-index to appear above the image) */}
+        <div className="relative z-20 h-full">
           <nav className="p-6">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
               <div className="text-white text-xl font-light tracking-wide">
