@@ -47,6 +47,15 @@ export default function LandingPage() {
     // Add more images with attribution
   ];
 
+  // At the top of your component
+  useEffect(() => {
+    // Preload images
+    backgroundImages.forEach(image => {
+      const img = new Image();
+      img.src = image.src;
+    });
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
@@ -77,6 +86,11 @@ export default function LandingPage() {
                         ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}
             style={{
                 backgroundImage: `url(${image.src})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                objectFit: 'cover',
+                width: '100%',
+                height: '100%'
             }}
             />
         ))}
