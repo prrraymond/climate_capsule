@@ -75,40 +75,41 @@ export default function LandingPage() {
 
   return (
     <div className="relative">
-      {/* Hero Section with rotating background */}
-      <div className="relative h-screen">
-      {/* Update the slideshow rendering code */}
-        <div className="absolute inset-0 z-0">
+    {/* Hero Section with rotating background */}
+    <div className="relative h-screen">
+      <div className="absolute inset-0 z-0">
         {backgroundImages.map((image, index) => (
-            <div 
+          <div 
             key={image.src}
             className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000
-                        ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}
+                      ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}`}
             style={{
-                backgroundImage: `url(${image.src})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                objectFit: 'contain',
-                width: '100%',
-                height: '100%'
+              backgroundImage: `url(${image.src})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              objectFit: 'contain',
+              width: '100%',
+              height: '100%'
             }}
-            />
+          />
         ))}
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
         
-        {/* Attribution overlay */}
-        <div className="absolute top-4 right-4 text-white/70 text-sm backdrop-blur-sm bg-black/30 px-2 py-1 rounded">
-            {backgroundImages[currentImageIndex].attribution}{' '}
-            <a 
+        {/* Attribution overlay - moved to top right with higher z-index */}
+        <div className="absolute top-4 right-4 text-white/70 text-sm backdrop-blur-sm bg-black/30 px-2 py-1 rounded z-20">
+          {backgroundImages[currentImageIndex].attribution}{' '}
+          <a 
             href={backgroundImages[currentImageIndex].link} 
             target="_blank" 
             rel="noopener noreferrer"
             className="underline hover:text-white"
-            >
+          >
             View original
-            </a>
+          </a>
         </div>
-        </div>
+      </div>
+      
+      {/* Rest of your content remains the same */}
 
         <div className="relative z-10 h-full">
           <nav className="p-6">

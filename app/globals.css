@@ -77,3 +77,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add these classes to your globals.css file */
+.image-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1000ms;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .background-image {
+    background-size: cover;
+  }
+}
