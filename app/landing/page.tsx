@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function LandingPage() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageOrientation, setImageOrientation] = useState('landscape');
   
   const backgroundImages = [
     {
@@ -44,13 +45,27 @@ export default function LandingPage() {
     }
   ];
 
-  // Preload images
+  // Preload images and check orientation
   useEffect(() => {
     backgroundImages.forEach(image => {
       const img = new Image();
       img.src = image.src;
     });
   }, []);
+  
+  // Check image orientation when the current image changes
+  useEffect(() => {
+    const checkImageDimensions = () => {
+      const img = new Image();
+      img.onload = function() {
+        const isPortrait = img.height > img.width;
+        setImageOrientation(isPortrait ? 'portrait' : 'landscape');
+      };
+      img.src = backgroundImages[currentImageIndex].src;
+    };
+    
+    checkImageDimensions();
+  }, [currentImageIndex, backgroundImages]);
 
   // Image rotation timer
   useEffect(() => {
@@ -73,9 +88,15 @@ export default function LandingPage() {
     <div className="relative">
       {/* Hero Section with solid gradient background */}
       <div className="relative h-screen bg-gradient-to-br from-blue-900 to-blue-700">
-        {/* Photo component within the hero section */}
-        <div className="absolute inset-0 flex justify-center items-center z-0 px-4 md:px-12 lg:px-24">
-          <div className="relative w-full max-w-4xl h-[60vh] overflow-hidden rounded-xl shadow-2xl">
+        {/* Photo component with offset positioning */}
+        <div className="absolute inset-0 flex justify-end items-center z-0 px-4 md:px-12 lg:px-24">
+          <div 
+            className={`relative w-full max-w-4xl ${
+              imageOrientation === 'portrait' 
+                ? 'h-[70vh] max-w-md' 
+                : 'h-[60vh]'
+            } md:mr-[-5%] overflow-hidden rounded-xl shadow-2xl transition-all duration-500`}
+          >
             {backgroundImages.map((image, index) => (
               <div 
                 key={image.src}
@@ -177,8 +198,11 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* Rest of your code remains unchanged */}
+      
       {/* How It Works Section */}
       <div id="how-it-works" className="bg-gray-50 py-24">
+        {/* Existing content */}
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-light text-gray-900 mb-16 text-center">How It Works</h2>
           
@@ -218,6 +242,7 @@ export default function LandingPage() {
 
       {/* Contribute Images Section */}
       <div className="bg-white py-24">
+        {/* Existing content */}
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl font-light text-gray-900 mb-6">Share Your View</h2>
@@ -235,3 +260,4 @@ export default function LandingPage() {
     </div>
   )
 }
+
