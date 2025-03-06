@@ -87,14 +87,14 @@ export default function LandingPage() {
   return (
     <div className="relative">
       {/* Hero Section with solid gradient background */}
-      <div className="relative h-screen bg-gradient-to-br from-blue-900 to-blue-700">
+      <div className="relative min-h-screen bg-gradient-to-br from-blue-900 to-blue-700">
         {/* Photo component with offset positioning */}
         <div className="absolute inset-0 flex justify-end items-center z-0 px-4 md:px-8 lg:px-16">
           <div 
             className={`relative w-full ${
               imageOrientation === 'portrait' 
-                ? 'h-[80vh] max-w-xl' 
-                : 'h-[70vh] max-w-6xl'
+                ? 'h-[50vh] md:h-[80vh] max-w-full md:max-w-xl' 
+                : 'h-[40vh] md:h-[70vh] max-w-full md:max-w-6xl'
             } md:ml-[-10%] lg:ml-[-15%] overflow-hidden rounded-xl shadow-2xl transition-all duration-500`}
           >
             {backgroundImages.map((image, index) => (
@@ -132,14 +132,14 @@ export default function LandingPage() {
         
         {/* Content (now positioned with z-index to appear above the image) */}
         <div className="relative z-20 h-full">
-          <nav className="p-6">
+          <nav className="p-4 md:p-6">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
-              <div className="text-white text-xl font-light tracking-wide">
+              <div className="text-white text-lg md:text-xl font-light tracking-wide">
                 Climate Pledge
               </div>
               <Link 
                 href="/auth" 
-                className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full 
+                className="px-4 py-1.5 md:px-6 md:py-2 bg-white/10 hover:bg-white/20 text-white text-sm md:text-base rounded-full 
                           backdrop-blur-sm transition-all duration-200 font-quicksand"
               >
                 Get Started
@@ -147,31 +147,31 @@ export default function LandingPage() {
             </div>
           </nav>
 
-          <main className="max-w-7xl mx-auto px-6 pt-24">
+          <main className="max-w-7xl mx-auto px-4 md:px-6 pt-8 md:pt-24">
             <div className="max-w-3xl">
-              <h1 className="text-5xl md:text-7xl font-light text-white mb-8 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light text-white mb-4 md:mb-8 leading-tight">
                 Take Action for 
                 <span className="text-emerald-400"> Climate Change</span>
               </h1>
               
-              <p className="text-xl text-white/80 mb-12 leading-relaxed">
+              <p className="text-base md:text-xl text-white/80 mb-6 md:mb-12 leading-relaxed">
                 Join a community of climate-conscious individuals making meaningful 
                 changes in their daily lives. Track your progress, discover new ways 
                 to reduce your impact, and be part of the solution.
               </p>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <Link 
                   href="/auth" 
-                  className="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white 
-                            rounded-full text-lg transition-all duration-200"
+                  className="px-6 py-2.5 md:px-8 md:py-3 bg-emerald-500 hover:bg-emerald-600 text-white 
+                            rounded-full text-base md:text-lg transition-all duration-200 text-center"
                 >
                   Make Your Pledge
                 </Link>
                 <button 
                   onClick={() => scrollToSection('how-it-works')} 
-                  className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white 
-                            rounded-full text-lg backdrop-blur-sm transition-all duration-200"
+                  className="px-6 py-2.5 md:px-8 md:py-3 bg-white/10 hover:bg-white/20 text-white 
+                            rounded-full text-base md:text-lg backdrop-blur-sm transition-all duration-200 text-center mt-2 sm:mt-0"
                 >
                   Learn More
                 </button>
@@ -179,8 +179,8 @@ export default function LandingPage() {
             </div>
           </main>
 
-          <div className="max-w-7xl mx-auto px-6 mt-32">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 mt-16 md:mt-32">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
               <div className="backdrop-blur-sm bg-[#0000a0]/5 rounded-xl p-6 border border-[#0000a0]/10 hover:bg-[#0000a0]/10 transition-all duration-300">
                 <div className="text-4xl font-light text-emerald-400 mb-2">12K+</div>
                 <div className="text-white/90">Active Pledges</div>
@@ -201,12 +201,12 @@ export default function LandingPage() {
       {/* Rest of your code remains unchanged */}
       
       {/* How It Works Section */}
-      <div id="how-it-works" className="bg-gray-50 py-24">
+      <div id="how-it-works" className="bg-gray-50 py-12 md:py-24">
         {/* Existing content */}
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-light text-gray-900 mb-16 text-center">How It Works</h2>
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-8 md:mb-16 text-center">How It Works</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-[#0000a0]/10 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <span className="text-2xl text-emerald-600">1</span>
